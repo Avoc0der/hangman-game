@@ -33,7 +33,7 @@ const Hangman: React.FC = (): JSX.Element => {
     }
 
     const generateButtons = (): JSX.Element[] => {
-        return 'abcdefghijklmnopqrstuvwxyz'.split('').map((ltr) => (
+        return 'абвгдеєжзиіїйклмнопрстуфхцчшщьюя'.split('').map((ltr) => (
             <button
                 key={ltr}
                 type="button"
@@ -58,13 +58,13 @@ const Hangman: React.FC = (): JSX.Element => {
     const isWinner = guessedWord().join('') === answer
     const altText = `${nWrong}/${maxWrong} guesses`
     let gameState: JSX.Element[] | string = generateButtons()
-    if (isWinner) gameState = 'You Win!'
-    if (gameOver) gameState = 'You Lose!'
+    if (isWinner) gameState = 'Ти Переміг(-ла)!'
+    if (gameOver) gameState = 'Ти Програв(-ла)!'
     return (
         <div className="Hangman">
             <h1>Hangman</h1>
             <img src={images[nWrong]} alt={altText} />
-            <p className="Hangman-wrong">Guessed Wrong: {nWrong}</p>
+            <p className="Hangman-wrong">Зроблено Помилок: {nWrong}</p>
             <p className="Hangman-word">{!gameOver ? guessedWord() : answer}</p>
             <p className="Hangman-btns">{gameState}</p>
             <button type="button" onClick={reset} className="Hangman-reset">
